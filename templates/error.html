@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block main %}
+	<br/><br/>
+	<div class="mx-auto justify-content-center text-center" style="width: 750px;">
+		<div class="alert alert-danger" role="alert">
+			{{ error|safe }}
+		</div>
+	</div>
+	<br/><br/><br/>
+
+	<h1 class="display-4 text-center">You have to go <a href="/">back</a>.</h1>
+	<br/>
+
+{% endblock %}

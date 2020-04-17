@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+	{% if (data|length < 1)  %}
+
+		<br/><br/><br/>
+		<div class="mx-auto justify-content-center text-center" style="width: 750px;">
+			<div class="alert alert-primary" role="alert">
+				There are no records of such kind in the vault.
+			</div>
+		</div>
+
+	{% else %}
+
+		{% if (data|length == 150) %}
+			<br/>
+			<div class="mx-auto justify-content-center text-center" style="width: 750px;">
+				<div class="alert alert-primary" role="alert">
+					{% if data|length == 150 %}
+						Search results have been capped to 150.<br/>
+						Click <a href="{{ currentUrl + 'page=' + (pageNumber|int + 1)|string }}">here</a> for the next 150.<br/>
+					{% endif %}				
+					{% if pageNumber|int > 0 %}
+					Click <a href="{{ currentUrl + 'page=' + (pageNumber|int -1)|string }}">here</a> for the previous 150.<br/>
+					{% endif %}
+				</div>
+			</div>
+		{% endif %}
+
+		{% if (data|length < 150) and (pageNumber|int) > 0 %}
+			<br/>
+			<div class="mx-auto justify-content-center text-center" style="width: 750px;">
+				<div class="alert alert-primary" role="alert">
+					Click <a href="{{ currentUrl + 'page=' + (pageNumber|int -1)|string }}">here</a> for the previous 150.<br/>
+				</div>
+			</div>
+		{% endif %}
+	
+		<br/>
+		<table class="table tableAdditional">
+			<thead>
+				<tr>
+					<th style="width: 90%">Matching posts <span style="font-size:12px">(newest to oldest)</span></th>
+					<th style="width: 10%"></th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for dat in data %}
+			<div class="container" style="">
+				<tr style="background-color: #AAAACC;">
+					<td>
+						<img src="https://kohlchan.net{{ dat[3] }}" title="{% if dat[12] %}{{ dat[12]}}{% else %}{{ dat[3] }}{% endif %}" />
+						{% if dat[7] != 'None' %}<p class="postSubject">{{ dat[7]|safe }}</p>{% endif %}
+						<p class="postName">{{ dat[5]|safe }}</p>
+						<p class="postDate">{{ dat[6] }} No. {{ dat[2] }}</p>
+						<br/>
+
+						{% if dat[8] != '' %}
+						
+							<div class="fileBox">
+								{{ dat[8]|safe }}<br/>
+								<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+							</div>
+						
+						{% endif %}
+						
+						{% if dat[9] != '' %}
+						
+							<div class="fileBox">
+								{{ dat[9]|safe }}<br/>
+								<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+							</div>
+						
+						{% endif %}
+						
+						{% if dat[10] != '' %}
+						
+							<div class="fileBox">
+								{{ dat[10]|safe }}<br/>
+								<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+							</div>
+						
+						{% endif %}
+						
+						{% if dat[11] != '' %}
+						
+							<div class="fileBox">
+								{{ dat[11]|safe }}<br/>
+								<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+							</div>
+						
+						{% endif %}
+
+						
+						<p class="postBody"><br/>
+							{{ dat[4]|replace("\n", "<br/>")|safe }}
+						</p>
+					</td>
+					<td>
+						<b><a href="/int/res/{{ dat[1] }}.html#{{ dat[2] }}" target="_blank">Open</a></b>
+					</td>
+				</tr>
+			</div>
+
+				
+				
+			{% endfor %}
+			<tr>
+				<td><h4 style="font-size: 12px">{{ data|length }} results</h4></td>
+				<td></td>
+			</tr>
+			
+			</tbody>
+		</table>
+		
+	{% endif %}
+{% endblock %}

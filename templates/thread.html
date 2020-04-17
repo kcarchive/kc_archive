@@ -1,0 +1,116 @@
+{% extends "layout.html" %}
+
+{% block main %}
+	<style>
+		body {
+			background-color: #eee;
+		}
+		main {
+			float: left;
+		}
+	</style>
+	<div style="overflow: hidden; line-height: 1.2em">
+		
+		<img src="https://kohlchan.net{{ op[0][3] }}" title="{% if op[0][12] %}{{ op[0][12]}}{% else %}{{ op[0][3] }}{% endif %}" />
+		{% if op[0][7] != 'None' %}<p class="postSubject">{{ op[0][7]|safe }}</p>{% endif %}
+		<p class="postName">{{ op[0][5]|safe }}</p>
+		<p class="postDate">{{ op[0][6] }} No. <a name="{{ op[0][2] }}" href="#{{ op[0][2] }}">{{ op[0][2] }}</a></p>
+		<p>
+		{% if op[0][8] != '' %}
+		
+			<div class="fileBox-op">
+				{{ op[0][8]|safe }}<br/>
+				<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+			</div>
+		
+		{% endif %}
+		
+		{% if op[0][9] != '' %}
+		
+			<div class="fileBox-op">
+				{{ op[0][9]|safe }}<br/>
+				<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+			</div>
+		
+		{% endif %}
+		
+		{% if op[0][10] != '' %}
+		
+			<div class="fileBox-op">
+				{{ op[0][10]|safe }}<br/>
+				<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+			</div>
+		
+		{% endif %}
+		
+		{% if op[0][11] != '' %}
+		
+			<div class="fileBox-op">
+				{{ op[0][11]|safe }}<br/>
+				<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+			</div>
+			
+		{% endif %}
+			{{ op[0][4]|replace("\n", "<br/>")|safe }}<br/>
+		</p>
+	</div>
+
+
+	{% if posts %}
+		
+		{% for post in posts %}
+			<div class="container postBody" style="padding-left: 30px;">
+				<div style="background-color: #AAAACC; padding: 10px; padding-bottom: 20px; margin-bottom: 7px; display: inline-block;">
+					<img src="https://kohlchan.net{{ post[3] }}" title="{% if post[12] %}{{ post[12]}}{% else %}{{ post[3] }}{% endif %}" />
+					{% if post[7] != 'None' %}<p class="postSubject">{{ post[7] }}</p>{% endif %}
+					<p class="postName">{{ post[5]|safe }}</p>
+					<p class="postDate">{{ post[6] }} No. <a name="{{ post[2] }}" href="#{{ post[2] }}">{{ post[2] }}</a></p>
+
+					<br/>
+
+					{% if post[8] != '' %}
+					
+						<div class="fileBox">
+							{{ post[8]|safe }}<br/>
+							<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+						</div>
+					
+					{% endif %}
+					
+					{% if post[9] != '' %}
+					
+						<div class="fileBox">
+							{{ post[9]|safe }}<br/>
+							<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+						</div>
+					
+					{% endif %}
+					
+					{% if post[10] != '' %}
+					
+						<div class="fileBox">
+							{{ post[10]|safe }}<br/>
+							<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+						</div>
+					
+					{% endif %}
+					
+					{% if post[11] != '' %}
+					
+						<div class="fileBox">
+							{{ post[11]|safe }}<br/>
+							<img src="{{ url_for('static', filename='assburger.jpg') }}" class="uploadImage"/>
+						</div>
+					
+					{% endif %}
+
+					
+					<br/>
+						{{ post[4]|replace("\n", "<br/>")|safe }}
+				</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<br/><h1 style="font-size: 10px;">{{ posts|length }} posts + OP</h1>
+
+{% endblock %}
