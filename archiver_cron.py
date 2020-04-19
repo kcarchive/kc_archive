@@ -64,6 +64,9 @@ for thread in threads[:30]:
     threadIds = str(data['threadId'])
 
     #OP ==========================================================================================================
+    if data['message'][-8:] == '[b]\n[/b]':
+        data['markdown'] = '<p style="color: grey">[message not archived as per request of the poster]</p>'
+        print('opt-out detected in thread ' + str(data['threadID']))
 
     datep = parse(data['creation']).strftime("%Y-%m-%d %H:%M:%S")
 
