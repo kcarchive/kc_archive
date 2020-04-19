@@ -40,7 +40,7 @@ def catalog():
 threads = catalog()
 
 
-for thread in threads:
+for thread in threads[:30]:
     try:
         with urlopen('https://kohlchan.net/int/res/' + str(thread) + '.json') as res:
             source = res.read()
@@ -51,6 +51,7 @@ for thread in threads:
         except:
     	    print('thread ' + str(thread) + ' probably diedededed')
     	    continue
+
     data = json.loads(source)
 
     filezp = [''] * 4
@@ -94,6 +95,9 @@ for thread in threads:
         date = parse(post['creation']).strftime("%Y-%m-%d %H:%M:%S")
 
         filez = [''] * 4
+        if post['message'][-8:] == '[b]\n[/b]':
+            post['markdown'] = '<p style="color: grey">[message not archived as per request of the poster]</p>'
+            print('opt-out detected in thread ' + str(data['threadID']))
 
         iterator = 0
         for file in post['files']:
