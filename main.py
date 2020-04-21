@@ -4,6 +4,10 @@ from archive_helpers import connectMysql, renderError, assembleSql, collectData
 app = Flask(__name__)
 
 #only flask functions here
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(app.static_folder, 'favicon.ico')
+
 @app.route('/robots.txt')
 def serve_robot_overlords():
 	return send_from_directory(app.static_folder, 'robots.txt')
