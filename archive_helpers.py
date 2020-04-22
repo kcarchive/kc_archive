@@ -118,13 +118,13 @@ def collectData():
 
 
 	# MESSAGE
-	if searchString is not None and searchString != '':
+	if searchString:
 		dataDict['string'] = searchString
 	else:
 		dataDict.pop('string')
 
 	# DAY
-	if dateDay is not None and dateDay != '':
+	if dateDay:
 		if dateDay.isdecimal() and int(dateDay) <= 31 and int(dateDay) >= 1:
 			dataDict['day'] = int(dateDay)
 		else:
@@ -133,7 +133,7 @@ def collectData():
 		dataDict.pop('day')
 
 	# MONTH
-	if dateMonth is not None and dateMonth != '':
+	if dateMonth:
 		if dateMonth.isdecimal() and int(dateMonth) <= 12 and int(dateMonth) >= 1:
 			dataDict['month'] = int(dateMonth)
 		else:
@@ -142,7 +142,7 @@ def collectData():
 		dataDict.pop('month')
 
 	# YEAR
-	if dateYear is not None and dateYear != '':
+	if dateYear:
 		if dateYear.isdecimal():
 			dataDict['year'] = int(dateYear)
 		else:
@@ -151,25 +151,25 @@ def collectData():
 		dataDict.pop('year')
 
 	# COUNTRY
-	if countryball is not None and countryball != '':
+	if countryball:
 		dataDict['country'] = countryball
 	else:
 		dataDict.pop('country')
 
 	# SUBJECT
-	if subject is not None and subject != '':
+	if subject:
 		dataDict['subject'] = subject
 	else:
 		dataDict.pop('subject')
 
 	# NAME
-	if name is not None and name != '':
+	if name:
 		dataDict['name'] = name
 	else:
 		dataDict.pop('name')
 
 	# POST_ID
-	if postID is not None and postID != '':
+	if postID:
 		if postID.isdecimal():
 			dataDict['postID'] = int(postID)
 		else:
@@ -178,7 +178,7 @@ def collectData():
 		dataDict.pop('postID')
 
 	# THREAD_ID
-	if threadID is not None and threadID != '':
+	if threadID:
 		if threadID.isdecimal():
 			dataDict['threadID'] = int(threadID)
 		else:
@@ -186,12 +186,12 @@ def collectData():
 	else:
 		dataDict.pop('threadID')
 
-	if filename is not None and filename != '':
+	if filename:
 		dataDict['filename'] = filename
 	else:
 		dataDict.pop('filename')
 
-	if page is not None and page.isdecimal() is True:
+	if page and page.isdecimal():
 		dataDict['page'] = int(page)
 
 	return dataDict
