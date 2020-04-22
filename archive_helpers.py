@@ -102,7 +102,9 @@ def collectData():
 	}
 
 	# get data from the forms; pls dont bully for searchString
-	searchString = request.args.get('string').replace('&', '&amp;').replace('\'', '&apos;').replace('>', '&gt;').replace('<', '&lt;').replace('"', '&quot;')
+	searchString = request.args.get('string')
+	if searchString:
+		searchString = searchString.replace('&', '&amp;').replace('\'', '&apos;').replace('>', '&gt;').replace('<', '&lt;').replace('"', '&quot;')
 	dateDay = request.args.get('day') #int
 	dateMonth = request.args.get('month') #int
 	dateYear =  request.args.get('year') #int
