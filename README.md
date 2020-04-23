@@ -17,3 +17,9 @@ TO-DO's:
     * thread 123456: [countryball] [date] "[post body text stripped of html]"
     * thread 123457: [countryball] [date] "[post body text stripped of html]"
     * etc
+* Implement an image-archiving service that saves only sized-down thumbnails of said images
+* Show replies next to the cursor when mouseovering anchors, like on kc
+* Create a separate page for statiscics such as:
+    * Posts per hour by countryball
+    * Amount of posts that contain certain keywords given by the user graphed with time, country and frequency
+    * Total archived posts, total archived threads, etc
