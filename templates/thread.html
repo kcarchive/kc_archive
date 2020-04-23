@@ -10,7 +10,7 @@
 		}
 	</style>
 	<div style="overflow: hidden; line-height: 1.2em">
-		
+		<a class="btn btn-primary" target="_blank" href="https://kohlchan.net/int/res/{{ op[0][2] }}.html" style="float: right">Open on KC</a>
 		<img src="https://kohlchan.net{{ op[0][3] }}" title="{% if op[0][12] %}{{ op[0][12]}}{% else %}{{ op[0][3] }}{% endif %}" />
 		{% if op[0][7] != 'None' %}<p class="postSubject">{{ op[0][7]|safe }}</p>{% endif %}
 		<p class="postName">{{ op[0][5]|safe }}</p>
@@ -53,6 +53,7 @@
 		{% endif %}
 			{{ op[0][4]|replace("\n", "<br/>")|safe }}<br/>
 		</p>
+		
 	</div>
 
 
@@ -111,6 +112,7 @@
 			</div>
 		{% endfor %}
 	{% endif %}
-	<br/><h1 style="font-size: 10px;">{{ posts|length }} posts + OP</h1>
+	<br/><h1 style="font-size: 10px; float: left">{{ posts|length }} posts + OP</h1>
+	
 
 {% endblock %}
