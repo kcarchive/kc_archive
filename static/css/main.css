@@ -90,3 +90,46 @@
 .postBody {
 	line-height: 1.2em;
 }
+
+
+/* changes go here */
+
+#ebin-container {
+	margin-bottom: 25px;
+}
+
+#ebin-container label {
+	width : 100px;
+	color: white;
+	background: #313370;
+	padding: 4px 10px;
+}
+#ebin-container label:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#ebin-container input {
+	display: inline-block;
+}
+
+#filter {
+	color: #007bff;
+}
+
+#filter:hover {
+	cursor: pointer;
+	text-decoration: underline
+}
+.ebin-bg {
+	background: #313370;
+}
+
+button.ebin-bg {
+	background: #313370;
+	border-color: #313370;
+}
+
+html body{
+	background: #eee;
+}
