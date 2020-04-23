@@ -14,9 +14,9 @@ class connectMysql:
 
 	def connect(self):
 		self.mydb = mysql.connector.connect(
-			host='localhost',
-			user='root',
-			passwd='Zahesizahesi1',
+			host='[HOST]',
+			user='[USER]',
+			passwd='[PASSWORD]',
 			database='kc',
 			charset='utf8mb4',
 			auth_plugin='mysql_native_password'
