@@ -14,12 +14,12 @@ class connectMysql:
 
 	def connect(self):
 		self.mydb = mysql.connector.connect(
-			host='[HOST]',
-			user='[USER]',
-			passwd='[PASSWORD]',
-			database='[DATABASE]',
-			charset='utf8mb4'
-			#auth_plugin='mysql_native_password'
+			host='localhost',
+			user='root',
+			passwd='Zahesizahesi1',
+			database='kc',
+			charset='utf8mb4',
+			auth_plugin='mysql_native_password'
 		)
 		self.mycursor = self.mydb.cursor()
 
@@ -79,6 +79,8 @@ def assembleSql(myDict):
 		if k == 'year':
 			sql += ' AND YEAR(DATE_CREATED) = %s'
 			sqlVarsList.append(v)
+		if k == 'onlyop':
+			sql += ' AND THREAD_ID = POST_ID'
 		if k == 'page':
 			sql += ' ORDER BY DATE_CREATED DESC LIMIT 150 OFFSET %s'
 			sqlVarsList.append(v * 150)
@@ -98,10 +100,11 @@ def collectData():
 		'postID': 0,
 		'threadID': 0,
 		'filename': '',
+		'onlyop': False,
 		'page': 0
 	}
 
-	# get data from the forms; pls dont bully for searchString
+	# get data from the forms
 	searchString = request.args.get('string')
 	if searchString:
 		searchString = searchString.replace('&', '&amp;').replace('\'', '&apos;').replace('>', '&gt;').replace('<', '&lt;').replace('"', '&quot;')
@@ -114,9 +117,9 @@ def collectData():
 	postID = request.args.get('postID') #int
 	threadID = request.args.get('threadID') #int
 	filename = request.args.get('filename') #string
+	onlyOP = request.args.get('onlyOP') # only OP flag
 	page = request.args.get('page')
-
-
+	
 	# MESSAGE
 	if searchString:
 		dataDict['string'] = searchString
@@ -186,12 +189,20 @@ def collectData():
 	else:
 		dataDict.pop('threadID')
 
+	#FILENAMES
 	if filename:
 		dataDict['filename'] = filename
 	else:
 		dataDict.pop('filename')
+		
+	#ONLY OP FLAG
+	if onlyOP:
+		dataDict['onlyop'] = True
+	else:
+		dataDict.pop('onlyop')
 
+	#PAGE NUMBER
 	if page and page.isdecimal():
 		dataDict['page'] = int(page)
-
+		
 	return dataDict
