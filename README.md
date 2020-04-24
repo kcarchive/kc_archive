@@ -13,7 +13,7 @@ TO-DO's:
 * Add a live link to kohlchan in thread.html ✔ Done.
 * Add a live link to uploads on kohlchan; if expired, keep the assburger.jpg (requires database rework)
 * Add a response-watching service, preferably through persistent cookies: if user receives a response, notify them through some medium
-* Add a page that lists n amount of the newest threads archived, with a part of their respective OP posts next to them. Example:
+* Add a page that lists n amount of the newest threads archived, with a part of their respective OP posts next to them. Example: ✔ Done.
     * thread 123456: [countryball] [date] "[post body text stripped of html]"
     * thread 123457: [countryball] [date] "[post body text stripped of html]"
     * etc
