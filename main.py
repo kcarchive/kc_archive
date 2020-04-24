@@ -78,18 +78,18 @@ def show_post(THREAD_ID):
 
 	return render_template('thread.html', op=opRow, posts=postRows)
 
-@app.route('/last200')
+@app.route('/last500')
 def last200():
 	mysqlObj = connectMysql()
 	try:
 		mysqlObj.connect()
 	except:
 		return renderError('Error connecting to the database.')
-	mysqlObj.execute('SELECT * FROM posts WHERE THREAD_ID=POST_ID ORDER BY DATE_CREATED DESC LIMIT 200', ())
+	mysqlObj.execute('SELECT * FROM posts WHERE THREAD_ID=POST_ID ORDER BY DATE_CREATED DESC LIMIT 500', ())
 	dat = mysqlObj.fetch()
 	mysqlObj.disconnect()
 
-	return render_template('last_200.html', data=dat)
+	return render_template('last_500.html', data=dat)
 
 @app.route('/whatthefuck')
 def about():
