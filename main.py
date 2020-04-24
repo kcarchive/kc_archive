@@ -32,9 +32,6 @@ def result():
 	if type(result) == str: # on failure of collectData(), result is str
 		return renderError(result)
 
-	if len(result) < 2:
-		return renderError('No search criteria provided.')
-
 	sqlReady = assembleSql(result) # sql query at [0] and variables at [1]
 	mysqlObj = connectMysql()
 	try:
