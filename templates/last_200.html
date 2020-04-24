@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+	<h1 class="display-4 text-center">Last 200 threads (OPs)</h1>
+	<br/><br/>
+	{% for dat in data %}
+		{% set lenSub = 0 %}
+		{% set lenBod = dat[4]|striptags|length %}
+		<div style="border: 1px dashed blue; border-radius: 3px; margin-bottom: 3px; padding: 2px;">
+			<img src="https://kohlchan.net{{ dat[3] }}" title="{% if dat[12] %}{{ dat[12]}}{% else %}{{ dat[3] }}{% endif %}" />
+			<p class="postName">{{ dat[5]|safe }}</p>
+			<p class="postDate">{{ dat[6] }} No. <a style="color: blue">{{ dat[2] }}</a></p>
+			{% if dat[7] != 'None' %}<p class="postSubject" style="font-size: 16px">{% if dat[7]|length > 70 %}{{ dat[7]|safe|truncate(70) }}{% set lenSub = dat[7]|truncate(70)|length %}{% else %}{% set lenSub = dat[7]|length %}{{ dat[7]|safe }}{% endif %}</p>{% endif %}:
+			{{ dat[4]|replace("\n", " | ")|striptags|truncate((78-lenSub)|abs, True, '...', 0) }}
+			<a style="float: right" href="/int/res/{{ dat[2] }}.html">[open]</a>
+		</div>
+	{% endfor %}
+{% endblock %}
+	
