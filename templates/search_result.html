@@ -41,19 +41,23 @@
 		<table class="table tableAdditional">
 			<thead>
 				<tr>
-					<th style="width: 85%">Matching posts <span style="font-size:12px">(newest to oldest)</span></th>
-					<th style="width: 15%"></th>
+					<th>Matching posts <span style="font-size:12px">(newest to oldest)</span></th>
 				</tr>
 			</thead>
 			<tbody>
 			{% for dat in data %}
-			<div class="container" style="">
+			<div class="container">
 				<tr style="background-color: #AAAACC;">
 					<td>
+						<b style="float:right"><a href="/int/res/{{ dat[1] }}.html#{{ dat[2] }}" target="_blank" style="width: 100%; margin-bottom: 5px" class="btn btn-primary">Open</a><br/>
+						<a href="https://kohlchan.net/int/res/{{ dat[1] }}.html#{{ dat[2] }}" target="_blank" style="width: 100%" class="btn btn-primary">Open on KC</a></b>
 						<img src="https://kohlchan.net{{ dat[3] }}" title="{% if dat[12] %}{{ dat[12]}}{% else %}{{ dat[3] }}{% endif %}" />
 						{% if dat[7] != 'None' %}<p class="postSubject">{{ dat[7]|safe }}</p>{% endif %}
 						<p class="postName">{{ dat[5]|safe }}</p>
 						<p class="postDate">{{ dat[6] }} No. {{ dat[2] }}</p>
+						{% if dat[1] == dat[2] %}
+						<p style="color: green; display: inline; font-weight: bold">[OP]</p>
+						{% endif %}
 						<br/>
 
 						{% if dat[8] != '' %}
@@ -97,10 +101,6 @@
 							{{ dat[4]|replace("\n", "<br/>")|safe }}
 						</p>
 					</td>
-					<td>
-						<b><a href="/int/res/{{ dat[1] }}.html#{{ dat[2] }}" target="_blank" style="width: 100%; margin-bottom: 5px" class="btn btn-primary">Open</a><br/>
-						<a href="https://kohlchan.net/int/res/{{ dat[1] }}.html#{{ dat[2] }}" target="_blank" style="width: 100%" class="btn btn-primary">Open on KC</a></b>
-					</td>
 				</tr>
 			</div>
 
@@ -109,7 +109,6 @@
 			{% endfor %}
 			<tr>
 				<td><h4 style="font-size: 12px">{{ data|length }} results</h4></td>
-				<td></td>
 			</tr>
 			
 			</tbody>
