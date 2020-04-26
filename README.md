@@ -23,3 +23,4 @@ TO-DO's:
     * Posts per hour by countryball
     * Amount of posts that contain certain keywords given by the user graphed with time, country and frequency
     * Total archived posts, total archived threads, etc
+* Write a mysql function to strip post bodies of html tags (currently, if you search /int/ every post with >>#### comes up)
