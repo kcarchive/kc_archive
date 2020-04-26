@@ -6,7 +6,7 @@
 <br/>
 <br/>
 
-	<form action="/result" method="get" onsubmit="ebin()">
+	<form action="/result" method="get" onsubmit="ebin()" id="mainForm">
 		<input autocomplete="off" autofocus class="form-control" minlength="3" type="text" name="string" placeholder="Enter a search string (optional)">
 		<span id="filter" onClick="ebinFilter()">+ Show Filters</span>
 		<br/>
@@ -274,7 +274,7 @@
 		</div>
 
 		<div class="justify-content-center text-center">
-			<button type="submit" class="btn btn-primary ebin-bg">Search</button>
+			<button type="submit" class="btn btn-primary ebin-bg" id="btnSubmit">Search</button>
 		</div>
 	</form>
 
@@ -323,6 +323,20 @@
 		}
 
 	}
+</script>
+<!-- disable form submit after submission -->
+<script>
+    $(document).ready(function () {
+
+        $("#mainForm").submit(function (e) {
+
+            //disable the submit button
+            $("#btnSubmit").attr("disabled", true);
+
+            return true;
+
+        });
+    });
 </script>
 	
 {% endblock %}
